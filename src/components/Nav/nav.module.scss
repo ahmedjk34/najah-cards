@@ -1,0 +1,67 @@
+@use "../variables" as v;
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  border-bottom: 3px solid v.$primary-accent;
+  padding: 0 5rem;
+  margin-bottom: 3px;
+  background-color: v.$secondary-background;
+  font-family: v.$title-font;
+
+  &::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: v.$secondary-accent;
+    position: absolute;
+    bottom: -5px;
+    left: 0rem;
+  }
+  //logo
+  h2 {
+    text-transform: capitalize;
+    font-weight: 800;
+    font-size: 30px;
+    text-transform: uppercase;
+    text-align: center;
+    background: -webkit-linear-gradient(
+      -86deg,
+      blue 10%,
+      v.$secondary-accent 50%,
+      v.$primary-accent 85%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-stroke: 4px transparent;
+    color: v.$secondary-background;
+    cursor: pointer;
+    min-width: fit-content;
+    transition: text-shadow 0.2s ease-in-out;
+    &:hover {
+      text-shadow: 1px 1px 0px white;
+    }
+  }
+  .authLinksHolder {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    a {
+      color: v.$text-color;
+      font-size: large;
+      background-color: v.$secondary-accent;
+      padding: 0.75rem;
+      border-radius: 0.4rem;
+      min-width: fit-content;
+      transition: all linear 0.25s;
+      &:hover {
+        opacity: 0.7;
+        transform: translateY(2.5px);
+      }
+    }
+    a:nth-child(2) {
+      background-color: v.$primary-accent;
+    }
+  }
+}
