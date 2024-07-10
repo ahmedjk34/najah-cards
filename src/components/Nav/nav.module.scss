@@ -1,4 +1,5 @@
 @use "../variables" as v;
+@use "../mixins" as m;
 .nav {
   display: flex;
   justify-content: space-between;
@@ -22,19 +23,15 @@
   }
   //logo
   h2 {
-    text-transform: capitalize;
     font-weight: 800;
     font-size: 30px;
     text-transform: uppercase;
     text-align: center;
-    background: -webkit-linear-gradient(
-      -86deg,
-      blue 10%,
-      v.$secondary-accent 50%,
-      v.$primary-accent 85%
+    @include m.gradient-text-outline(
+      blue,
+      v.$secondary-accent,
+      v.$primary-accent
     );
-    -webkit-background-clip: text;
-    -webkit-text-stroke: 4px transparent;
     color: v.$secondary-background;
     cursor: pointer;
     min-width: fit-content;
