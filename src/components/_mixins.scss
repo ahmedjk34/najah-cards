@@ -1,0 +1,10 @@
+@mixin gradient-text-outline($color1, $color2, $color3) {
+  background: -webkit-linear-gradient(
+    -86deg,
+    $color1 10%,
+    $color2 50%,
+    $color3 85%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-stroke: 4px transparent;
+}
