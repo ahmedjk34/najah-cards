@@ -1,8 +1,5 @@
 import React from "react";
 import styles from "./home.module.scss";
-import bottomImage from "../../assets/heroImg.png";
-import topImage from "../../assets/heroImg2.png";
-import Image from "next/image";
 
 type Props = {};
 
