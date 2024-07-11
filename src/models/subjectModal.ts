@@ -1,4 +1,3 @@
-// models/Subject.js
 import mongoose, { Model } from "mongoose";
 import { Subject as SubjectType } from "@/Types";
 
@@ -17,10 +16,17 @@ const subjectSchema = new Schema<SubjectType>({
     type: String,
     required: true,
   },
+  decks: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Deck",
+      default: [],
+    },
+  ],
 });
 
-const subjectModal: Model<SubjectType> =
+const subjectModel: Model<SubjectType> =
   mongoose.models.Subject ||
   mongoose.model<SubjectType>("Subject", subjectSchema);
 
-export default subjectModal;
+export default subjectModel;
