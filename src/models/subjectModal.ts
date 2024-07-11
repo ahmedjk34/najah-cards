@@ -1,10 +1,10 @@
 // models/Subject.js
-import { Subject } from "@/Types";
-import mongoose from "mongoose";
+import mongoose, { Model } from "mongoose";
+import { Subject as SubjectType } from "@/Types";
 
 const { Schema } = mongoose;
 
-const subjectSchema = new Schema({
+const subjectSchema = new Schema<SubjectType>({
   image: {
     type: String,
     required: true,
@@ -19,8 +19,8 @@ const subjectSchema = new Schema({
   },
 });
 
-const subjectModal =
-  mongoose.models.subjectModal ||
-  mongoose.model<Subject>("Subject", subjectSchema);
+const subjectModal: Model<SubjectType> =
+  mongoose.models.Subject ||
+  mongoose.model<SubjectType>("Subject", subjectSchema);
 
 export default subjectModal;
