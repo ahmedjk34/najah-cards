@@ -16,7 +16,12 @@ async function SubjectCardsHolder() {
     <div className={styles.subjectCardsHolder}>
       <h1>Our Main Subjects</h1>
       {subjects.length > 0 ? (
-        subjects.map((subject) => <SubjectCard subject={subject}></SubjectCard>)
+        subjects.map((subject) => (
+          <SubjectCard
+            subject={subject}
+            key={"subject" + subject._id}
+          ></SubjectCard>
+        ))
       ) : (
         <div>No subjects available</div>
       )}

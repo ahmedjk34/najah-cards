@@ -17,7 +17,7 @@ const SubjectCard = ({ subject }: Props) => {
       transition={{ duration: 0.5, delay: 0.3, ease: "easeInOut" }}
       onClick={() => router.push(`/subject/${subject._id}`)}
     >
-      <img src={subject.image}></img>
+      <img src={subject.image} alt={subject.title}></img>
       <div>
         <h2>{subject.title}</h2>
         <p>{subject.description}</p>
