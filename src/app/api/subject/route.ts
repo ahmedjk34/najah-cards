@@ -34,6 +34,7 @@ export async function POST(request: NextRequest) {
       await subjectModal.create(subject);
     }
   }
+  return new NextResponse("Success");
 }
 export async function GET(request: NextRequest) {
   try {
