@@ -1,0 +1,31 @@
+$gradients: (
+  linear-gradient(135deg, #667eea 0%, #764ba2 100%),
+  linear-gradient(135deg, #f7971e 0%, #ffd200 100%),
+  linear-gradient(135deg, #ff5f6d 0%, #ffc371 100%)
+);
+
+.card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  max-width: 1100px;
+  padding: 2rem 1rem;
+  border-radius: 2rem;
+  transition: 0.3s ease-in-out translate;
+  &:hover {
+    cursor: pointer;
+    translate: 0 -4px;
+  }
+  img {
+    width: 5rem;
+    height: 6rem;
+    object-fit: cover;
+  }
+}
+
+@for $i from 1 through length($gradients) {
+  .card:nth-child(#{$i + 1}) {
+    background: nth($gradients, $i);
+  }
+}
