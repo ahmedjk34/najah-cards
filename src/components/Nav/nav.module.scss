@@ -21,25 +21,10 @@
     bottom: -5px;
     left: 0rem;
   }
+
   //logo
-  h2 {
-    font-weight: 800;
-    font-size: 30px;
-    text-transform: uppercase;
-    text-align: center;
-    @include m.gradient-text-outline(
-      blue,
-      v.$secondary-accent,
-      v.$primary-accent
-    );
-    color: v.$secondary-background;
-    cursor: pointer;
-    min-width: fit-content;
-    transition: text-shadow 0.2s ease-in-out;
-    &:hover {
-      text-shadow: 1px 1px 0px white;
-    }
-  }
+  @include m.logo;
+
   .authLinksHolder {
     display: flex;
     gap: 1rem;
