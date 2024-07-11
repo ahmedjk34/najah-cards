@@ -4,6 +4,7 @@
   display: flex;
   width: 100%;
   gap: 0.5rem;
+  min-height: 90dvh;
   .heroInfo {
     flex: 1;
     display: flex;
@@ -59,20 +60,27 @@
   }
 }
 
-// .imageHolder {
-//   width: 40vw;
-//   min-width: 400px;
-//   max-width: 1200px;
-//   position: relative;
-//   .topImage {
-//     position: absolute;
-//     z-index: 100;
-//     width: 20vw;
-//     left: -15vw;
-//     top: -5vh;
-//   }
-//   .bottomImage {
-//     position: relative;
-//     z-index: 1;
-//   }
-// }
+.subjectCardsHolder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 2rem;
+  gap: 1rem;
+  h1 {
+    font-family: v.$secondary-font;
+    width: max-content;
+    &::after {
+      content: "";
+      display: block;
+      height: 2px;
+      width: 100%;
+      margin-top: 4px;
+      @include m.gradient-underline(
+        blue,
+        v.$secondary-accent,
+        v.$primary-accent
+      );
+    }
+  }
+}
