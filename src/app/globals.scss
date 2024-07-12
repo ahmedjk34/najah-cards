@@ -10,7 +10,6 @@
 #root {
   display: grid;
   min-height: 100dvh;
-  grid-template: 5rem auto auto 5rem / 1fr;
   background-color: v.$primary-background;
   font-family: v.$primary-font;
   color: v.$text-color;

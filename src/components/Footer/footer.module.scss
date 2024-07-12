@@ -1,6 +1,7 @@
 @use "../variables" as v;
 @use "../mixins" as m;
 .footer {
+  height: 5rem;
   position: relative;
   border-top: 3px solid v.$primary-accent;
   padding: 0 5rem;
