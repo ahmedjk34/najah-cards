@@ -21,27 +21,29 @@ export default function Layout({
     passwordError: null,
   });
 
+  function formValidation(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    if (password.length < 5) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        passwordError: "The password is too short",
+      }));
+    }
+    if (username.length < 5) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        usernameError: "Username is too short",
+      }));
+    }
+  }
+
   return (
     <div className={styles.authPage}>
       <span></span>
       <form
         className={styles.modal}
         action={pathName.endsWith("login") ? login : register}
-        onSubmit={(e) => {
-          e.preventDefault();
-          if (password.length < 5) {
-            setErrors((prevErrors) => ({
-              ...prevErrors,
-              passwordError: "The password is too short",
-            }));
-          }
-          if (username.length < 5) {
-            setErrors((prevErrors) => ({
-              ...prevErrors,
-              usernameError: "Username is too short",
-            }));
-          }
-        }}
+        onSubmit={(e) => formValidation(e)}
       >
         <div className={styles.formGroup}>
           <label htmlFor="username">Username:</label>
