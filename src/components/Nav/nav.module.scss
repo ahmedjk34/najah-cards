@@ -6,6 +6,7 @@
   justify-content: space-between;
   align-items: center;
   position: relative;
+  z-index: 10;
   border-bottom: 3px solid v.$primary-accent;
   padding: 0 5rem;
   margin-bottom: 3px;
