@@ -52,8 +52,9 @@ export default function Layout({
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
+          <span>{errors.usernameError}</span>
         </div>
-        <span>{errors.usernameError}</span>
+
         <div className={styles.formGroup}>
           <label htmlFor="password">Password:</label>
           <input

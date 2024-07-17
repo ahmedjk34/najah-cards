@@ -14,8 +14,8 @@ function Nav({}: Props) {
         <div>{/*profile meny*/}</div>
       ) : (
         <div className={styles.authLinksHolder}>
-          <Link href="">Sign Up</Link>
-          <Link href="">Login</Link>
+          <Link href="/auth/signup">Sign Up</Link>
+          <Link href="/auth/login">Login</Link>
         </div>
       )}
     </div>
