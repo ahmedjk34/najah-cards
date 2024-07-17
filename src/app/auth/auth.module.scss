@@ -47,14 +47,17 @@
     flex-direction: column;
     gap: 1rem;
     padding: 2rem;
+    span {
+      margin-bottom: 0.5rem;
+      color: red;
+      font-size: large;
+      font-family: v.$title-font;
+    }
     .formGroup {
       display: flex;
       flex-direction: column;
       text-align: left;
-      span {
-        margin-top: 0.5rem;
-        color: red;
-      }
+
       label {
         font-size: larger;
         font-family: v.$title-font;

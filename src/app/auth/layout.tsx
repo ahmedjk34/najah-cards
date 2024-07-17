@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import styles from "./auth.module.scss";
 import { usePathname } from "next/navigation";
 import { login, register } from "@/actions/user";
@@ -13,27 +13,17 @@ export default function Layout({
   const pathName = usePathname();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState<{
-    usernameError: string | null;
-    passwordError: string | null;
-  }>({
-    usernameError: null,
-    passwordError: null,
-  });
+  const [error, setError] = useState<string>("");
+  const formRef = useRef<HTMLFormElement | undefined>(undefined);
 
-  function formValidation(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    if (password.length < 5) {
-      setErrors((prevErrors) => ({
-        ...prevErrors,
-        passwordError: "The password is too short",
-      }));
-    }
-    if (username.length < 5) {
-      setErrors((prevErrors) => ({
-        ...prevErrors,
-        usernameError: "Username is too short",
-      }));
+  async function submitForm(e: React.FormEvent<HTMLFormElement>) {
+    try {
+      e.preventDefault();
+      let formData = new FormData(formRef.current);
+      const selectedAction = pathName.endsWith("login") ? login : register;
+      await selectedAction(formData);
+    } catch (error: any) {
+      setError(error.message);
     }
   }
 
@@ -42,9 +32,10 @@ export default function Layout({
       <span></span>
       <form
         className={styles.modal}
-        action={pathName.endsWith("login") ? login : register}
-        onSubmit={(e) => formValidation(e)}
+        ref={formRef}
+        onSubmit={async (e) => await submitForm(e)}
       >
+        <span>{error}</span>
         <div className={styles.formGroup}>
           <label htmlFor="username">Username:</label>
           <input
@@ -54,7 +45,6 @@ export default function Layout({
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
-          <span>{errors.usernameError}</span>
         </div>
 
         <div className={styles.formGroup}>
@@ -66,7 +56,6 @@ export default function Layout({
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <span>{errors.passwordError}</span>
         </div>
         {children}
       </form>

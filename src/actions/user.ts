@@ -6,12 +6,12 @@ import { redirect } from "next/navigation";
 import { hash } from "bcryptjs";
 import { CredentialsSignin } from "next-auth";
 import { signIn } from "@/auth";
+import { AuthError } from "@/Types";
 
 const login = async (formData: FormData) => {
   const username = formData.get("username") as string;
   const password = formData.get("password") as string;
   const user = await User.findOne({ username });
-
   try {
     await signIn("credentials", {
       redirect: false,
@@ -19,11 +19,10 @@ const login = async (formData: FormData) => {
       email: user?.email,
       password,
     });
+    redirect("/");
   } catch (error) {
-    const someError = error as CredentialsSignin;
-    return someError.cause;
+    throw new Error("Invalid Credentials");
   }
-  redirect("/");
 };
 
 const register = async (formData: FormData) => {
