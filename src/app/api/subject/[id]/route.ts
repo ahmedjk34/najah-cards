@@ -1,5 +1,5 @@
 import connectDB from "@/lib/connectDB";
-import subjectModal from "@/models/subjectModal";
+import subjectModal from "@/models/subjectModel";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(
