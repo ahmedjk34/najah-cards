@@ -18,6 +18,7 @@ const deckSchema = new Schema<DeckType>({
   },
   quiz: {
     type: String,
+    default: "",
     required: true,
   },
   flashcards: [

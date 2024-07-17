@@ -23,7 +23,7 @@ async function page({ params }: Props) {
         height: "100%",
       }}
     >
-      <div style={{ maxWidth: "1500px" }}>
+      <div style={{ maxWidth: "1500px", padding: "2rem" }}>
         <SubjectInfo
           image={subject.image}
           title={subject.title}
