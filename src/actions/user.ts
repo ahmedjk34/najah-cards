@@ -8,14 +8,15 @@ import { CredentialsSignin } from "next-auth";
 import { signIn } from "@/auth";
 
 const login = async (formData: FormData) => {
-  const email = formData.get("email") as string;
+  const username = formData.get("username") as string;
   const password = formData.get("password") as string;
+  const user = await User.findOne({ username });
 
   try {
     await signIn("credentials", {
       redirect: false,
       callbackUrl: "/",
-      email,
+      email: user?.email,
       password,
     });
   } catch (error) {
@@ -36,8 +37,12 @@ const register = async (formData: FormData) => {
   await connectDB();
 
   // existing user
-  const existingUser = await User.findOne({ email });
+  const existingUser = await User.findOne({
+    $or: [{ email }, { username }],
+  });
+
   if (existingUser) throw new Error("User already exists");
+
   const hashedPassword = await hash(password, 12);
 
   await User.create({ username, email, password: hashedPassword });
