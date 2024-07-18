@@ -16,6 +16,7 @@
     -webkit-mask: radial-gradient(circle at 5% 30%, red 0%, transparent 25%);
   }
   & > span {
+    overflow: hidden;
     position: absolute;
     right: 0;
     bottom: 0;

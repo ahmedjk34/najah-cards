@@ -55,3 +55,21 @@
     border-image-source: linear-gradient(405deg, v.$primary-accent, red);
   }
 }
+
+/* Small phones (up to 480px) */
+@media (max-width: 480px) {
+  /* Your CSS rules here */
+}
+
+/* Medium phones (481px to 767px) */
+@media (max-width: 600px) {
+  .subjectInfo {
+    flex-direction: column;
+    h1 {
+      text-align: center;
+    }
+    img {
+      align-self: center;
+    }
+  }
+}
