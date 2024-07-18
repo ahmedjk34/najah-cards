@@ -47,6 +47,8 @@
       }
     }
     h1 {
+      position: relative;
+      z-index: 2;
       max-width: 650px;
       @include m.gradient-text-outline(
         blue,
@@ -83,5 +85,35 @@
         v.$primary-accent
       );
     }
+  }
+}
+
+/* Small phones (up to 480px) */
+@media (max-width: 480px) {
+  .hero {
+    .heroInfo {
+      padding: 1rem;
+      h1 {
+        font-size: 2.5rem;
+      }
+    }
+  }
+}
+
+/* Medium phones (481px to 767px) */
+@media (max-width: 850px) {
+  .hero {
+    .heroInfo {
+      padding: 1rem;
+      h1 {
+        font-size: 3rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .hero {
+    min-height: 70dvh;
   }
 }

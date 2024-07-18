@@ -48,3 +48,17 @@
     }
   }
 }
+
+/* Small phones (up to 480px) */
+@media (max-width: 480px) {
+  /* Your CSS rules here */
+}
+
+/* Medium phones (481px to 767px) */
+@media (max-width: 600px) {
+  .nav {
+    flex-direction: column;
+    height: auto;
+    padding: 1rem;
+  }
+}
