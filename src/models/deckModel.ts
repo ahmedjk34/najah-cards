@@ -14,6 +14,7 @@ const deckSchema = new Schema<DeckType>({
   },
   rating: {
     type: Number,
+    default: 0,
     required: true,
   },
   quiz: {
@@ -25,6 +26,7 @@ const deckSchema = new Schema<DeckType>({
     {
       type: Schema.Types.ObjectId,
       ref: "Flashcard",
+      default: [],
     },
   ],
   author: {
