@@ -10,10 +10,10 @@ function page({}: Props) {
       <div className={styles.formGroup}>
         <label htmlFor="email">Email:</label>
         <input type="email" id="email" name="email" />
-        <div className={styles.credentialsActionCenter}>
-          <button>Sign Up</button>
-          <Link href={"/auth/login"}>Already have an account?</Link>
-        </div>
+      </div>
+      <div className={styles.credentialsActionCenter}>
+        <button>Sign Up</button>
+        <Link href={"/auth/login"}>Already have an account?</Link>
       </div>
     </>
   );
