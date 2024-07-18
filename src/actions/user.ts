@@ -6,7 +6,6 @@ import { redirect } from "next/navigation";
 import { hash } from "bcryptjs";
 import { CredentialsSignin } from "next-auth";
 import { signIn } from "@/auth";
-import { AuthError } from "@/Types";
 
 const login = async (formData: FormData) => {
   const username = formData.get("username") as string;
@@ -21,32 +20,36 @@ const login = async (formData: FormData) => {
     });
     redirect("/");
   } catch (error) {
-    throw new Error("Invalid Credentials");
+    return "Invalid Credentials";
   }
 };
 
 const register = async (formData: FormData) => {
-  const username = formData.get("username") as string;
-  const email = formData.get("email") as string;
-  const password = formData.get("password") as string;
-  if (!username || !email || !password) {
-    throw new Error("Please fill all fields");
+  try {
+    const username = formData.get("username") as string;
+    const email = formData.get("email") as string;
+    const password = formData.get("password") as string;
+    if (!username || !email || !password) {
+      throw new Error("Please fill all fields");
+    }
+
+    await connectDB();
+
+    // existing user
+    const existingUser = await User.findOne({
+      $or: [{ email }, { username }],
+    });
+
+    if (existingUser) throw new Error("User already exists");
+
+    const hashedPassword = await hash(password, 12);
+
+    await User.create({ username, email, password: hashedPassword });
+    console.log(`User created successfully 🥂`);
+    redirect("/");
+  } catch (error: any) {
+    return error.message;
   }
-
-  await connectDB();
-
-  // existing user
-  const existingUser = await User.findOne({
-    $or: [{ email }, { username }],
-  });
-
-  if (existingUser) throw new Error("User already exists");
-
-  const hashedPassword = await hash(password, 12);
-
-  await User.create({ username, email, password: hashedPassword });
-  console.log(`User created successfully 🥂`);
-  redirect("/");
 };
 
 const fetchAllUsers = async () => {

@@ -21,10 +21,10 @@ export default function Layout({
       e.preventDefault();
       let formData = new FormData(formRef.current);
       const selectedAction = pathName.endsWith("login") ? login : register;
-      await selectedAction(formData);
-    } catch (error: any) {
-      setError(error.message);
-    }
+      //if there is an error message
+      const errorMessage = await selectedAction(formData);
+      setError(errorMessage);
+    } catch (error: any) {}
   }
 
   return (
