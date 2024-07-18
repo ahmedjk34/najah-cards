@@ -1,0 +1,25 @@
+//styling for not found and error pages
+
+@use "../components/variables" as v;
+@use "../components/mixins" as m;
+.notFound {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100dvh - 10.2rem);
+  color: white;
+  gap: 1rem;
+  font-family: v.$title-font;
+  h1 {
+    @include m.gradient-text-outline(
+      blue,
+      v.$secondary-accent,
+      v.$primary-accent
+    );
+    font-family: v.$accent-font;
+    padding: 1rem;
+    border-radius: 2rem;
+    box-shadow: 0px 0px 10px snow;
+  }
+}
