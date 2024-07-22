@@ -1,7 +1,19 @@
 import mongoose, { Model } from "mongoose";
-import { Deck as DeckType } from "@/Types";
+import { Deck as DeckType, Flashcard as FlashcardType } from "@/Types";
+import userModel from "./userModel";
 
 const { Schema } = mongoose;
+
+const flashcardSchema = new Schema<FlashcardType>({
+  question: {
+    type: String,
+    required: true,
+  },
+  answer: {
+    type: String,
+    required: true,
+  },
+});
 
 const deckSchema = new Schema<DeckType>({
   title: {
@@ -20,18 +32,11 @@ const deckSchema = new Schema<DeckType>({
   quiz: {
     type: String,
     default: "",
-    required: true,
   },
-  flashcards: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Flashcard",
-      default: [],
-    },
-  ],
+  flashcards: [flashcardSchema],
   author: {
     type: Schema.Types.ObjectId,
-    ref: "User",
+    ref: userModel,
     required: true,
   },
 });
