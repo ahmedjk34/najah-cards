@@ -1,6 +1,19 @@
 @use "../variables" as v;
 @use "../mixins" as m;
 
+$gradients: (
+  linear-gradient(135deg, #667eea 0%, #764ba2 100%),
+  linear-gradient(135deg, #f7971e 0%, #ffd200 100%),
+  linear-gradient(135deg, #ff5f6d 0%, #ffc371 100%),
+  linear-gradient(135deg, #43cea2 0%, #185a9d 100%),
+  linear-gradient(135deg, #ff512f 0%, #dd2476 100%),
+  linear-gradient(135deg, #2193b0 0%, #6dd5ed 100%),
+  linear-gradient(135deg, #da22ff 0%, #b91d73 100%),
+  linear-gradient(135deg, #f953c6 0%, #9733ee 100%),
+  linear-gradient(135deg, #e96443 0%, #904e95 100%),
+  linear-gradient(135deg, #16a085 0%, #f4d03f 100%)
+);
+
 .subjectInfo {
   display: flex;
   max-width: 1000px;
@@ -56,6 +69,40 @@
   }
 }
 
+.deckHolder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+  @for $i from 1 through length($gradients) {
+    .deckCard-#{$i} {
+      padding: 1rem;
+      background: nth($gradients, $i);
+      width: 90%;
+      height: 10rem;
+      border-radius: 2rem;
+      h2 {
+        font-family: v.$title-font;
+      }
+      .authorInfo {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-top: 1rem;
+        width: fit-content;
+        img {
+          width: 3rem;
+          height: 3rem;
+          border-radius: 0.2rem;
+        }
+        span {
+          opacity: 0.75;
+        }
+      }
+    }
+  }
+}
 /* Small phones (up to 480px) */
 @media (max-width: 480px) {
   /* Your CSS rules here */
