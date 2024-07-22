@@ -29,12 +29,6 @@ const userSchema = new Schema<UserType>({
       ref: "Deck",
     },
   ],
-  progress: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Progress",
-    },
-  ],
 });
 
 const userModel: Model<UserType> =
