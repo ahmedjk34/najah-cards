@@ -9,9 +9,9 @@ export async function GET(
 ) {
   try {
     await connectDB();
-    const deck = await deckModel.findById(params.id);
+    const deck = await deckModel.findById(params.id).populate("flashcards");
     if (!deck) {
-      return new NextResponse("Subject not found", { status: 404 });
+      return new NextResponse("Deck not found", { status: 404 });
     }
     return NextResponse.json(deck);
   } catch (error) {
