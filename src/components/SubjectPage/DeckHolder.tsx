@@ -1,6 +1,7 @@
 import { Deck } from "@/Types";
 import React from "react";
 import styles from "./subject-page.module.scss";
+import Link from "next/link";
 type Props = {
   decks: Deck[];
 };
@@ -13,7 +14,7 @@ function DeckHolder({ decks }: Props) {
           className={styles[`deckCard-${index + 1}`]}
           key={deck._id + index.toString()}
         >
-          <div>
+          <Link href={`/deck/${deck._id}`}>
             <h2>{deck.title}</h2>
             <h3>{deck.description}</h3>
             <div className={styles.authorInfo}>
@@ -23,7 +24,7 @@ function DeckHolder({ decks }: Props) {
                 {deck.author.username}
               </h4>
             </div>
-          </div>
+          </Link>
         </div>
       ))}
     </div>
