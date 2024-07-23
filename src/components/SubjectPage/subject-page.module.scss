@@ -80,7 +80,8 @@ $gradients: (
       padding: 1rem;
       background: nth($gradients, $i);
       width: 90%;
-      height: 10rem;
+      min-height: 10rem;
+      height: fit-content;
       border-radius: 2rem;
       h2 {
         font-family: v.$title-font;
