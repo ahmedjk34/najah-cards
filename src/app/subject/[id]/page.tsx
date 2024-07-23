@@ -21,7 +21,6 @@ async function page({ params, searchParams }: Props) {
       subject,
       numberOfPages,
     }: { subject: Subject; numberOfPages: number } = response.data;
-    console.log(numberOfPages);
     if (!subject) {
       throw new Error("Subject not found");
     }
@@ -32,7 +31,7 @@ async function page({ params, searchParams }: Props) {
           justifyContent: "center",
           alignItems: "center",
           width: "100%",
-          height: "100%",
+          minHeight: "calc(100dvh - 10rem)",
         }}
       >
         <div style={{ maxWidth: "1500px", padding: "2rem" }}>
@@ -41,9 +40,7 @@ async function page({ params, searchParams }: Props) {
             title={subject.title}
             description={subject.description}
           />
-          <DeckHolder
-            decks={Array.from({ length: 10 }, () => subject.decks[0])}
-          />
+          <DeckHolder decks={subject.decks} />
           <PageNumbersHolder numberOfPages={numberOfPages}></PageNumbersHolder>
         </div>
       </div>
